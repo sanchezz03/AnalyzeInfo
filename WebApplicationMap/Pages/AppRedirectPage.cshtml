@@ -1,0 +1,120 @@
+﻿@page
+@model WebApplicationMap.Pages.AppRedirectPageModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 10px;
+            padding-top: 0;
+            border: solid grey;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            grid-gap: 1em;
+        }
+
+        section {
+            margin-bottom: 1em;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 0.5em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 1em;
+        }
+
+
+        .app-info-form label, .app-info-form input {
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+    <br />
+
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <form method="POST" action="" class="app-info-form">
+            <section>
+
+                <label for="appId">App Id:</label>
+                <input type="text" id="appId" name="appId" value="@Model.AppInfo.App_ID" />
+
+                <label for="primaryServiceOwner">Primary Service Owner:</label>
+                <input type="text" id="primaryServiceOwner" name="primaryServiceOwner" value="@Model.AppInfo.Primary_ServiceOwner" />
+
+                <label for="appVersion">App Version:</label>
+                <input type="text" id="appVersion" name="appVersion" value="@Model.AppInfo.App_Version" />
+
+                <label for="instanceName">Instance Name:</label>
+                <input type="text" id="instanceName" name="instanceName" value="@Model.AppInfo.Instance_Name" />
+            </section>
+
+            <section>
+
+                <label for="adIntegrated">AD Integrated:</label>
+                <input type="text" id="adIntegrated" name="adIntegrated" value="@Model.AppInfo.AD_Integrated" />
+
+                <label for="citrixHosted">Citrix Hosted:</label>
+                <input type="text" id="citrixHosted" name="citrixHosted" value="@Model.AppInfo.Citrix_hosted" />
+
+                <label for="hyperDriveReady">HyperDrive Ready:</label>
+                <input type="text" id="hyperDriveReady" name="hyperDriveReady" value="@Model.AppInfo.HyperDrive_Ready" />
+
+                <label for="issRequired">ISS Required:</label>
+                <input type="text" id="issRequired" name="issRequired" value="@Model.AppInfo.ISS_Required" />
+            </section>
+
+            <section>
+                <label for="sslCertificate">SSL Certificate:</label>
+                <input type="text" id="sslCertificate" name="sslCertificate" value="@Model.AppInfo.SSL_Certificate" />
+
+                <label for="avExclusions">AV Exclusions:</label>
+                <input type="text" id="avExclusions" name="avExclusions" value="@Model.AppInfo.AV_Exclusions" />
+
+                <label for="appStorage">App Storage:</label>
+                <input type="text" id="appStorage" name="appStorage" value="@Model.AppInfo.App_Storage" />
+
+                <label for="iamIntegrated">IAM Integrated:</label>
+                <input type="text" id="iamIntegrated" name="iamIntegrated" value="@Model.AppInfo.IAM_Integrated" />
+            </section>
+        </form>
+    </div>
+    <br />
+    <br />
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,284 @@
+﻿@page "{searcharg?}"
+
+@model WebApplicationMap.Pages.IndexModel
+
+<h1>Map Tool</h1>
+
+<p>@Model.FeedBack</p>
+
+<form method="post">
+    <style>
+        *{
+            font-family: Arial, sans-serif;
+        }
+
+        h1{
+            margin-top:1px;
+        }
+
+        h2 {
+            font-size: 20px;
+            
+        }
+
+        table {
+            border-collapse: fixed;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            border: solid 0.1px grey;
+            padding: 10px;
+        }
+
+        th {
+            background-color: lightgrey;
+            color: black;
+            font-size: 14px;
+        }
+
+        td {
+            font-size: 12px;
+            padding:5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            width: 15%;
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: #337ab7;
+            color: white;
+        }
+
+            button:hover {
+                background-color: #555;
+                color: white;
+            }
+
+        input[type=text] {
+            width: 30%;
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+            input[type=text]:focus {
+                border: 1px solid #555;
+            }
+
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            width: 20%;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+            .pagination a {
+                display: inline-block;
+                padding: 6px 12px;
+                margin-right: 5px;
+                border-radius: 3px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                color: #333;
+                text-decoration: none;
+            }
+
+                .pagination a:hover {
+                    background-color: #f5f5f5;
+                }
+
+            .pagination .current {
+                background-color: #337ab7;
+                color: #fff;
+                border-color: #337ab7;
+            }
+
+        .search-buttons {
+            float: right;
+        }
+
+    </style>
+
+<label>
+    <select asp-for="searchValue" value="@Model.FindValue">
+        <option value="">&#x1F50D; Search</option>
+        <option value="primaryServiceOwner">Primary Service Owner</option>
+        <option value="instanceName">Instance Name</option>
+        <option value="appName">App Name</option>
+        <option value="appVersion">App Version</option>
+        <option value="adIntegrated">Ad Integrated</option>
+        <option value="citrixHosted">Citrix Hosted</option>
+        <option value="serverName">Server Name</option>
+        <option value="serverLocation">Server Location</option>
+        <option value="serialNumber">Serial Number</option>
+        <option value="maintanenceWindow">Maintenance Window</option>
+        <option value="serviceOwner">Service Owner</option>
+        <option value="appInstanceName">App Instance Name</option>
+        <option value="dataCenter">Data center</option>
+        <option value="ipAddress">IP Address</option>
+    </select>
+</label>
+
+    <label>
+        <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+    </label>
+
+
+    <button type="submit" asp-page-handler="Clear" formvalidate class="search-buttons">Clear</button>
+    <button type="submit" formmethod="get" class="search-buttons">Search</button>
+
+
+
+
+</form>
+<form>
+    <h2>App Info</h2>
+
+    @if (Model.AppInfo != null)
+    {
+        if (Model.AppInfo.Count > 0)
+        {
+            <table>
+                <thead>
+                <th></th>
+                <th>Primary Service Owner</th>
+                <th>App Version</th>
+                <th>Instance Name</th>
+                <th>AD Integrated</th>
+                <th>Citrix Hosted</th>
+                <th>Hyper Drive Ready</th>
+                <th>ISS Required</th>
+                <th>Dot Net</th>
+                <th>SSL Certificate</th>
+                <th>AV Exclusions</th>
+                <th>App Storage</th>
+                <th>IAM Integrated</th>
+            </thead>
+                <tbody>
+                    @foreach (var item in Model.AppInfo)
+                    {
+                        <tr>
+                            <td><a href="/AppRedirectPage?id=@item.App_ID">View</a></td>
+                            <td>@item.Primary_ServiceOwner</td>
+                            <td>@item.App_Version</td>
+                            <td>@item.Instance_Name</td>
+                            <td>@item.AD_Integrated</td>
+                            <td>@item.Citrix_hosted</td>
+                            <td>@item.HyperDrive_Ready</td>
+                            <td>@item.ISS_Required</td>
+                            <td>@item.DotNet</td>
+                            <td>@item.SSL_Certificate</td>
+                            <td>@item.AV_Exclusions</td>
+                            <td>@item.App_Storage</td>
+                            <td>@item.IAM_Integrated</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+    @{
+        var prevDisabledAppInfo = !Model.AppInfo.HasPreviousPage ? "disabled" : "";
+        var nextDisabledAppInfo = !Model.AppInfo.HasNextPage ? "disabled" : "";
+    }
+
+ <a asp-action="AppInfoPage"
+       asp-route-pageIndexForApp="@(Model.AppInfo.PageIndex -1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-default @prevDisabledAppInfo">
+        Previous
+    </a>
+    <a asp-action="AppInfoPage"
+       asp-route-pageIndexForApp="@(Model.AppInfo.PageIndex +1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-default @nextDisabledAppInfo">
+        Next
+    </a>
+</form>
+<form>
+
+    @if (Model.ServerInfoList != null)
+    {
+        if (Model.ServerInfoList.Count > 0)
+        {
+            <h2> Server Info</h2>
+            <table>
+                <thead>
+                <th></th>
+                <th>Server Name</th>
+                <th>Server Env</th>
+                <th>Server Location</th>
+                <th>Serial Number</th>
+                <th>Manufacturer</th>
+                <th>Maintanence Window</th>
+                <th>Service Owner</th>
+                <th>App Instance Name</th>
+                <th>Data Center</th>
+                <th>Deployment Type</th>
+                <th>IP Address</th>
+                <th>Model</th>
+                <th>OS Name</th>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ServerInfoList)
+                    {
+                        <tr>
+                            <td><a href="/ServerRedirectPage?id=@item.Server_ID">View</a></td>
+                            <td>@item.Server_Name</td>
+                            <td>@item.Server_Env</td>
+                            <td>@item.Server_Location</td>
+                            <td>@item.Serial_Number</td>
+                            <td>@item.Manufacturer</td>
+                            <td>@item.Maintenance_Window</td>
+                            <td>@item.Service_Owner</td>
+                            <td>@item.App_Instance_Name</td>
+                            <td>@item.DataCenter</td>
+                            <td>@item.Deployment_Type</td>
+                            <td>@item.IP_Address</td>
+                            <td>@item.Model</td>
+                            <td>@item.OS_Name</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+    @{
+        var prevDisabled = !Model.ServerInfoList.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.ServerInfoList.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-page="Index"
+       asp-route-pageIndexForServer="@(Model.ServerInfoList.PageIndex -1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       asp-route-findValue="@Model.FindValue"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-page="Index"
+       asp-route-pageIndexForServer="@(Model.ServerInfoList.PageIndex +1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       asp-route-findValue="@Model.FindValue"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+</form>

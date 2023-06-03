@@ -1,0 +1,227 @@
+﻿@page
+@model WebApplicationMap.Pages.RetiredServerRedirectPageModel
+@{
+    ViewData["Title"] = "Retired Server Info Page";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 900px;
+            padding: 10px;
+            border: solid grey;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 22% 22% 22% 22%;
+            grid-gap: 2em;
+        }
+
+        section {
+            margin-bottom: 1em;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 0.5em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 1em;
+        }
+
+
+        .retired-server-info-form label, .retired-server-info-form input {
+            font-size: 12px;
+        }
+
+ 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>@ViewData["Title"]</h3>
+        <form method="POST" action="" class="retired-server-info-form">
+            <section>
+
+                <label for="serverId">Server ID:</label>
+                <input type="text" id="serverId" name="serverId" value="@Model.RetiredServerInfo.Server_ID" readonly />
+
+                <label for="serverName">Server Name:</label>
+                <input type="text" id="serverName" name="serverName" value="@Model.RetiredServerInfo.Server_Name" readonly />
+
+                <label for="serialNumber">Serial Number:</label>
+                <input type="text" id="serialNumber" name="serialNumber" value="@Model.RetiredServerInfo.Serial_Number" readonly />
+
+                <label for="ipAddress">IP Address:</label>
+                <input type="text" id="ipAddress" name="ipAddress" value="@Model.RetiredServerInfo.IP_Address" readonly />
+
+                <label for="supportModel">Support Model:</label>
+                <input type="text" id="supportModel" name="supportModel" value="@Model.RetiredServerInfo.Support_Model" readonly />
+
+                <label for="osName"> OS Name:</label>
+                <input type="text" id="osName" name="osName" value="@Model.RetiredServerInfo.OS_Name" readonly />
+
+                <label for="buildDate">Build Date:</label>
+                <input type="text" id="buidDate" name="buildDate" value="@Model.RetiredServerInfo.Build_Date" readonly />
+
+                <label for="maintanenceWindow">Maintanence Window:</label>
+                <input type="text" id="maintanenceWindow" name="maintanenceWindow" value="@Model.RetiredServerInfo.Maintenance_Window" readonly />
+
+                <label for="deploynetType">Deployment Type:</label>
+                <input type="text" id="deploymentType" name="deploymentType" value="@Model.RetiredServerInfo.Deployment_Type" readonly />
+
+                <label for="supportStatus">Support Status:</label>
+                <input type="text" id="supportStatus" name="supportStatus" value="@Model.RetiredServerInfo.Support_Status" readonly />
+
+                <label for="serverLocation">Server Location:</label>
+                <input type="text" id="serverLocation" name="serverLocation" value="@Model.RetiredServerInfo.Server_Location" readonly />
+
+                <label for="dataCenter">Data Center:</label>
+                <input type="text" id="dataCenter" name="dataCenter" value="@Model.RetiredServerInfo.DataCenter" readonly />
+
+            </section>
+
+            <section>
+
+                <label for="manufactorer">Manufacturer:</label>
+                <input type="text" id="manufacturer" name="manufacturer" value="@Model.RetiredServerInfo.Manufacturer" readonly />
+
+                <label for="model">Model:</label>
+                <input type="text" id="model" name="model" value="@Model.RetiredServerInfo.Model" readonly />
+
+                <label for="serverType">Server Type:</label>
+                <input type="text" id="serverType" name="serverType" value="@Model.RetiredServerInfo.Server_Type" readonly />
+
+                <label for="dbType">DB Type:</label>
+                <input type="text" id="dbType" name="dbType" value="@Model.RetiredServerInfo.DBType" readonly />
+
+                <label for="noOfCpuus">No Of CPUs:</label>
+                <input type="text" id="noOfCpus" name="noOfCpus" value="@Model.RetiredServerInfo.NoOfCPUs" readonly />
+
+                <label for="cpuCores">CPU Cores:</label>
+                <input type="text" id="cpuCores" name="cpuCores" value="@Model.RetiredServerInfo.CPUCores" readonly />
+
+                <label for="cpuSppeds">CPU Speeds:</label>
+                <input type="text" id="cpuSpeeds" name="cpuSpeeds" value="@Model.RetiredServerInfo.CPUSpeeds" readonly />
+
+                <label for="rem">RAM:</label>
+                <input type="text" id="ram" name="ram" value="@Model.RetiredServerInfo.RAM" readonly />
+
+                <label for="primaryApp">Primary App:</label>
+                <input type="text" id="primaryApp" name="primaryApp" value="@Model.RetiredServerInfo.Primary_App" readonly />
+
+                <label for="secondaryApp">Secondary App:</label>
+                <input type="text" id="secondaryApp" name="seconadryApp" value="@Model.RetiredServerInfo.Secondary_App" readonly />
+
+                <label for="otherApp">Other App:</label>
+                <input type="text" id="otherApp" name="otherApp" value="@Model.RetiredServerInfo.Other_App" readonly />
+
+                <label for="appType">App Type:</label>
+                <input type="text" id="appType" name="appType" value="@Model.RetiredServerInfo.App_Type" readonly />
+
+            </section>
+
+            <section>
+
+                <label for="appEnv">App Enviroment:</label>
+                <input type="text" id="appEnv" name="appEnv" value="@Model.RetiredServerInfo.App_Env" readonly />
+
+                <label for="serverEnv">Server Env:</label>
+                <input type="text" id="serverEnv" name="serverEnv" value="@Model.RetiredServerInfo.Server_Env" readonly />
+
+                <label for="site">Site:</label>
+                <input type="text" id="site" name="syte" value="@Model.RetiredServerInfo.Site" readonly />
+
+                <label for="dmz">DMZ:</label>
+                <input type="text" id="dmz" name="dmz" value="@Model.RetiredServerInfo.DMZ" readonly />
+
+                <label for="serviceOwner">Service Owner:</label>
+                <input type="text" id="serviceOwner" name="serviceOwner" value="@Model.RetiredServerInfo.Service_Owner" readonly />
+
+                <label for="comments">Comments:</label>
+                <input type="text" id="commnets" name="comments" value="@Model.RetiredServerInfo.Comments" readonly />
+
+                <label for="createdBy">Created By:</label>
+                <input type="text" id="createdBy" name="createdBy" value="@Model.RetiredServerInfo.CreatedBy" readonly />
+
+                <label for="createdDate">Created Date:</label>
+                <input type="text" id="createdDate" name="createdDate" value="@Model.RetiredServerInfo.CreatedDate" readonly />
+
+                <label for="editedBy">Edited By:</label>
+                <input type="text" id="editedBy" name="editedBy" value="@Model.RetiredServerInfo.EditedBy" readonly />
+
+                <label for="editedDate">Edited Date:</label>
+                <input type="text" id="editedDate" name="editedDate" value="@Model.RetiredServerInfo.EditedDate " readonly />
+
+                <label for="lastPatched">Last Patched:</label>
+                <input type="text" id="lastPatched" name="lastPatched" value="@Model.RetiredServerInfo.Last_Patched " readonly />
+
+                <label for="appInstanceName">App Instance Name:</label>
+                <input type="text" id="appInstanceName" name="appInstanceName" value="@Model.RetiredServerInfo.App_Instance_Name" readonly />
+
+            </section>
+            <section>
+
+                <label for="patchingSource">Patching Source:</label>
+                <input type="text" id="patchingSource" name="patchingSource" value="@Model.RetiredServerInfo.Patching_Source " readonly />
+
+                <label for="frequency">Frequency:</label>
+                <input type="text" id="frequency" name="frequency" value="@Model.RetiredServerInfo.Frequency " readonly />
+
+                <label for="vendorApproved">Vendor Approved:</label>
+                <input type="text" id="vendorApproved" name="vendorApproved" value="@Model.RetiredServerInfo.Vendor_approved " readonly />
+
+                <label for="patchingTeam">Patching Team:</label>
+                <input type="text" id="patchingTeam" name="patchingTeam" value="@Model.RetiredServerInfo.Patching_Team " readonly />
+
+                <label for="preferredScheduleTime">Preferred Schedule Time:</label>
+                <input type="text" id="preferredScheduleTime" name="preferredScheduleTime" value="@Model.RetiredServerInfo.Preferred_Schedule_Time " readonly />
+
+                <label for="patchingAnalyst">Patching Analyst:</label>
+                <input type="text" id="patchingAnalyst" name="patchingAnalyst" value="@Model.RetiredServerInfo.Patching_Analyst " readonly />
+
+                <label for="workGroup">Work Group:</label>
+                <input type="text" id="workGroup" name="workGroup" value="@Model.RetiredServerInfo.WorkGroup " readonly />
+
+                <label for="patchingInstruction">Patching Instruction:</label>
+                <input type="text" id="patchingInstruction" name="patchingInstruction" value="@Model.RetiredServerInfo.Patching_Instruction" readonly />
+
+                <label for="zabbixAgent">Zabbix Agent:</label>
+                <input type="text" id="zabbixAgent" name="zabbixAgent" value="@Model.RetiredServerInfo.Zabbix_Agent " readonly />
+
+                <label for="zone">Zone:</label>
+                <input type="text" id="zone" name="zone" value="@Model.RetiredServerInfo.Zone " readonly />
+
+                <label for="isAutomationAllowed">Is Automation Allowed:</label>
+                <input type="text" id="isAutomationAllowed" name="isAutomationAllowed" value="@Model.RetiredServerInfo.IsAutomationAllowed " readonly />
+
+                <label for="sysAdminAccess">SysAdmin Access:</label>
+                <input type="text" id="sysAdminAccess" name="sysAdminEccess" value="@Model.RetiredServerInfo.SysAdmin_Access " readonly />
+
+        </form>
+    </div>
+    <br />
+    <br />
+</body>
+</html>

@@ -1,0 +1,253 @@
+﻿@page
+@model WebApplicationMap.Pages.RetiredServerPageModel
+@{
+    ViewData["Title"] = "Retired Server Info Page";
+}
+<form method="post">
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-top: 1px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 1px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            border: solid 0.1px grey;
+            padding: 10px;
+        }
+
+        th {
+            background-color: lightgrey;
+            color: black;
+            font-size: 14px;
+        }
+
+        td {
+            font-size: 12px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            width: 15%;
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: #337ab7;
+            color: white;
+        }
+
+            button:hover {
+                background-color: #555;
+                color: white;
+            }
+
+        input[type=text] {
+            width: 30%;
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+            input[type=text]:focus {
+                border: 1px solid #555;
+            }
+
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            width: 20%;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+            .pagination a {
+                display: inline-block;
+                padding: 6px 12px;
+                margin-right: 5px;
+                border-radius: 3px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                color: #333;
+                text-decoration: none;
+            }
+
+                .pagination a:hover {
+                    background-color: #f5f5f5;
+                }
+
+            .pagination .current {
+                background-color: #337ab7;
+                color: #fff;
+                border-color: #337ab7;
+            }
+
+        .search-buttons {
+            float: right;
+        }
+    </style>
+
+
+    <table>
+        <thead>
+            <tr>
+
+                <th></th>
+                <th>Server Name</th>
+                <th>Server Location</th>
+                <th>Serial Number</th>
+                <th>Maintanence Window</th>
+                <th>Service Owner</th>
+                <th>App Instance Name</th>
+                <th>Data Center</th>
+                <th>IP Address</th>
+                <th>Support Model</th>
+                <th>OS Name</th>
+                <th>Build Date</th>
+                <th>Deployment Type</th>
+                <th>Support Status</th>
+                <th>Manufacturer</th>
+                <th>Model</th>
+                <th>Server Type</th>
+                <th>DB Type</th>
+                <th>No Of CPUS</th>
+                <th>CPU Cores</th>
+                <th>RAM</th>
+                <th>Primary App</th>
+                <th>Secondary App</th>
+                <th>Other App</th>
+                <th>App Type</th>
+                <th>App Env</th>
+                <th>Server Env</th>
+                <th>Site</th>
+                <th>DMZ</th>
+                <th>Comments</th>
+                <th>Created By</th>
+                <th>Created Date</th>
+                <th>Edited By</th>
+                <th>Edited Date</th>
+                <th>Last Patched</th>
+                <th>Patching Sourse</th>
+                <th>Frequency</th>
+                <th>Vendor approved</th>
+                <th>Patching Team</th>
+                <th>Prefered Schedule Time</th>
+                <th>Patching Analyst</th>
+                <th>Work Group</th>
+                <th>Patching Instruction</th>
+                <th>Zabbix Agent</th>
+                <th>Zone</th>
+                <th>Is Automation Allowed</th>
+                <th>SysAdmin Acces</th>
+                <th>Retirement Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.RetiredServerInfosList == null)
+            {
+
+            }
+            else
+            {
+                @foreach (var item in Model.RetiredServerInfosList)
+                {
+                    if (item != null)
+                    {
+                        <tr>
+                            <td><a href="/RetiredServerRedirectPage?id=@item.Server_ID">View</a></td>
+                            <td>@item.Server_Name</td>
+                            <td>@item.Server_Location</td>
+                            <td>@item.Serial_Number</td>
+                            <td>@item.Maintenance_Window</td>
+                            <td>@item.Service_Owner</td>
+                            <td>@item.App_Instance_Name</td>
+                            <td>@item.DataCenter</td>
+                            <td>@item.IP_Address</td>
+                            <td>@item.Support_Model</td>
+                            <td>@item.OS_Name</td>
+                            <td>@item.Build_Date</td>
+                            <td>@item.Deployment_Type</td>
+                            <td>@item.Support_Status</td>
+                            <td>@item.Manufacturer</td>
+                            <td>@item.Model</td>
+                            <td>@item.Server_Type</td>
+                            <td>@item.DBType</td>
+                            <td>@item.NoOfCPUs</td>
+                            <td>@item.CPUCores</td>
+                            <td>@item.RAM</td>
+                            <td>@item.Primary_App</td>
+                            <td>@item.Secondary_App</td>
+                            <td>@item.Other_App</td>
+                            <td>@item.App_Type</td>
+                            <td>@item.App_Env</td>
+                            <td>@item.Server_Env</td>
+                            <td>@item.Site</td>
+                            <td>@item.DMZ</td>
+                            <td>@item.Comments</td>
+                            <td>@item.CreatedBy</td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.EditedBy</td>
+                            <td>@item.EditedDate</td>
+                            <td>@item.Last_Patched</td>
+                            <td>@item.Patching_Source</td>
+                            <td>@item.Frequency</td>
+                            <td>@item.Vendor_approved</td>
+                            <td>@item.Patching_Instruction</td>
+                            <td>@item.Preferred_Schedule_Time</td>
+                            <td>@item.Patching_Analyst</td>
+                            <td>@item.WorkGroup</td>
+                            <td>@item.Patching_Instruction</td>
+                            <td>@item.Zabbix_Agent</td>
+                            <td>@item.Zone</td>
+                            <td>@item.IsAutomationAllowed</td>
+                            <td>@item.SysAdmin_Access</td>
+                            <td>@item.Retirement_Date</td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+    <br />
+     @{
+        var prevDisabled = !Model.RetiredServerInfosList.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.RetiredServerInfosList.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-page="RetiredServerPage" 
+    asp-route-pageIndex="@(Model.RetiredServerInfosList.PageIndex -1)" 
+    class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-page="RetiredServerPage"
+       asp-route-pageIndex="@(Model.RetiredServerInfosList.PageIndex +1)"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+</form>

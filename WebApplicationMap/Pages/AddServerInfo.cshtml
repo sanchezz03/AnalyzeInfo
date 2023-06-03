@@ -1,0 +1,442 @@
+﻿@page
+@model WebApplicationMap.Pages.AddServerInfoModel
+@{
+    var message = ViewData["Message"]?.ToString();
+}
+
+<style>
+    /* CSS code for styling the table */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .my-btn {
+        /* Define common styling for both buttons */
+        color: #fff;
+        background-color: lightgreen;
+    }
+
+        .my-btn:hover {
+            /* Define hover styling for both buttons */
+            background-color: lightgreen;
+            cursor: pointer;
+        }
+
+    a {
+        color: #0077cc;
+    }
+
+</style>
+
+<h1 class="mb-3">Edit Server Info</h1>
+
+@if (!string.IsNullOrWhiteSpace(message))
+{
+    <div class="alert alert-success" role="alert">
+        @message
+    </div>
+}
+
+<form method="post">
+    <div class="row">
+        <div class="column">
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+
+                <tr>
+                    <td>Server Name</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Server_Name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Serial Nimber</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Serial_Number" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>IP Address</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.IP_Address" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Support Model</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Support_Model" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>OS Name</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.OS_Name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Build Date</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Build_Date" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Maintanence Window</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Maintenance_Window" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Deployment Type</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Deployment_Type" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Support Status</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Support_Status" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Server Location</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Server_Location" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Data Center</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.DataCenter" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Manufacturer</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Manufacturer" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Model</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Model" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Server Type</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Server_Type" />
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>DBType</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.DBType" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>NoOfCPUs</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.NoOfCPUs" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>CPUCores</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.CPUCores" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>CPUSpeeds</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.CPUSpeeds" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>RAM</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.RAM" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Primary App</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Primary_App" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Secondary App</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Secondary_App" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Other App</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Other_App" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>App Type</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.App_Type" />
+                    </td>
+                </tr>
+
+          
+
+            </table>
+        </div>
+        <div class="column">
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+
+
+                <tr>
+                    <td>App Env</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.App_Env" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Server Env</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Server_Env" />
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Site</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Site" />
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>DMZ</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.DMZ" />
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Service Owner</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Service_Owner" />
+                    </td>
+                </tr>
+              
+
+                <tr>
+                    <td>Comments</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Comments" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>CreatedBy</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.CreatedBy" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Created Date</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.CreatedDate" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Edited By</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.EditedBy" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Edited Date</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.EditedDate" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Last_Patched</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Last_Patched" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>App Instance Name</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.App_Instance_Name" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Patching Source</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Patching_Source" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Frequency</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Frequency" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Vendor approved</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Vendor_approved" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Patching Team</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Patching_Team" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Preferred Schedule Time</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Preferred_Schedule_Time" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Patching Analyst</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Patching_Analyst" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Work Group</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.WorkGroup" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Patching Instruction</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Patching_Instruction" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Zabbix Agent</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Zabbix_Agent" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Zone</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.Zone" />
+                    </td>
+                </tr>
+             
+                <tr>
+                    <td>Is Automation Allowed</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.IsAutomationAllowed" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>SysAdmin Access</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="serverInfo.SysAdmin_Access" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="text" class="form-control" />
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <br />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary my-btn">Submit</button>
+    <a class="btn btn-primary my-btn" href="/AddServerInfo" role="button">Cancel</a>
+    <a class="btn btn-primary my-btn" href="/ServerInfoPage" role="button">Back</a>
+</form>
+

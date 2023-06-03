@@ -1,0 +1,55 @@
+﻿@page
+@model WebApplicationMap.Pages.Account.RegistrationModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+
+    <style>
+        .login-btn {
+            float: left;
+            margin-top: 10px;
+            margin-right: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 5px 10px;
+            display: inline-block;
+        }
+    </style>
+
+    <div class="container border" style="padding:20px">
+        <h3>Sign Up</h3>
+        @if (!string.IsNullOrEmpty(ViewBag.message))
+        {
+            <p>@ViewBag.message</p>
+        }
+        <form method="post" asp-page="registration">
+          <table>
+              <tr>
+                  <td>Username</td>
+                  <td>
+                      <input asp-for="@Model.user_Permition.UserName"/>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Password</td>
+                  <td>
+                      <input type="password" asp-for="@Model.user_Permition.Password"/>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <input type="submit" value="Save"/>
+                      <a asp-page="Login">Login</a>
+                  </td>
+              </tr>
+          </table>
+        </form>
+    </div>
+</body>
+</html>

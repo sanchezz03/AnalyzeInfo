@@ -1,0 +1,377 @@
+﻿@page "{id:int}"
+@model WebApplicationMap.Pages.EditServerInfoModel
+@{
+    var message = ViewData["Message"]?.ToString();
+    var deleted = ViewData["Deleted"]?.ToString();
+}
+<style>
+    /* CSS code for styling the table */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .column {
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .alert {
+        color: red;
+    }
+</style>
+
+<h3>Edit Server Info</h3>
+
+@if (!string.IsNullOrWhiteSpace(message))
+{
+    <div class="alert alert-success" role="alert">
+        @message
+    </div>
+}
+
+
+<form method="post">
+    <div class="row">
+        <div class="column">
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Server Id</td>
+                    <td>
+                        <input type="number" class="form-control" asp-for="editServerInfoModel.Server_ID" readonly />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Server Name</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Server_Name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Serial Number</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Serial_Number" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>IP Address</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.IP_Address" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Support Model </td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Support_Model" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>OS Name</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.OS_Name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Build Date</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Build_Date" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Maintanence Window</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Maintenance_Window" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Deployment Type</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Deployment_Type" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Support Status</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Support_Status" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Server Location</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Server_Location" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Data Center</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.DataCenter" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Manufacturer</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Manufacturer" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Model</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Model" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Server Type</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Server_Type" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>DB Type</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.DBType" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>No Of CPUs</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.NoOfCPUs" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>CPU Cores</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.CPUCores" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>CPU Speeds</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.CPUSpeeds" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>RAM</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.RAM" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Primary App</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Primary_App" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Secondary App</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Secondary_App" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Other App</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Other_App" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>App Type</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.App_Type" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="column">
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+   
+                <tr>
+                    <td>App Enviroment</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.App_Env" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Server Enviroment</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Server_Env" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Site</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Site" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>DMZ</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.DMZ" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Service Owner</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Service_Owner" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Comments</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Comments" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Created By</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.CreatedBy" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Created Date</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.CreatedDate" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Edited By</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.EditedBy" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Edited Date</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.EditedDate" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Patched</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Last_Patched" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>App Instance Name</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.App_Instance_Name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Patching Source</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Patching_Source" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Vendor Approved</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Vendor_approved" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Patching Team</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Patching_Team" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Patching Source</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Patching_Source" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Preferred Schedule Time</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Preferred_Schedule_Time" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Patching Analyst</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Patching_Analyst" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Work Group</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.WorkGroup" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Patching  Instruction</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Patching_Instruction" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zabbix Agent</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Zabbix_Agent" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zone</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.Zone" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Is Autometion Allowed</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.IsAutomationAllowed" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>SysAdmin Access</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editServerInfoModel.SysAdmin_Access" />
+                    </td>
+                </tr>
+                </table>
+                </div>
+
+            <br />
+            <br />
+            <button type="submit" class="btn btn-primary" asp-page-handler="Update">
+                Update
+            </button>
+            <button type="submit" class="btn btn-primary" asp-page-handler="Delete">
+                Delete
+            </button>
+            <button type="submit" class="btn btn-primary" asp-page-handler="RetiredServer">
+                Retire Server
+            </button>
+        </div>
+    </div>
+</form>

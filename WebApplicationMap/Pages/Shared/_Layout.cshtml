@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplicationMap</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css@0.9.8" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplicationMap.styles.css" asp-append-version="true" />
+</head>
+<style>
+    header {
+        color: white;
+        padding: 5px;
+        text-align: center;
+        background-color: 5px dimgrey;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    main {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f1f1f1;
+        border: solid 1px grey;
+        border-radius:5px;
+    }
+
+    nav li {
+    }
+
+        nav li a {
+            display: block;
+            color: #333;
+            text-align: center;
+            padding: 15px 29px;
+            text-decoration: none;
+            
+        }
+
+        nav li a:hover {
+            background-color: #ddd;
+            border: solid 1px grey;
+            border-radius: 5px;
+        }
+
+    .logout-btn {
+        float: right;
+        margin-top: 10px;
+        margin-right: 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 5px 10px;
+        display: inline-block;
+    }
+
+    .login-btn {
+        float: left;
+        margin-top: 10px;
+        margin-right: 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 5px 10px;
+        display: inline-block;
+    }
+</style>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a asp-area="" asp-page="/Index">Home</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-page="/ServerInfoPage">Server Info</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-page="/AppInfoPage">App Info</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-page="/RetiredServerPage">Retired Server Info</a>
+                </li>
+                <li>
+                    @if (User.IsInRole("administrator"))
+                    {
+                        <a asp-area="" asp-page="/UserBacklogPage">User Backlog Info</a>
+                    }
+                </li>
+                <li>
+                    <a asp-area="" asp-page="/Privacy">Privacy</a>
+                </li>
+            </ul>
+        </nav>
+        <br />
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form method="post" class="form-inline" asp-page="/Account/LogOut">
+                <button type="submit" class="ml-2 btn btn-link logout-btn">LogOut</button>
+            </form>
+        }
+
+   </header>
+
+
+    <div>
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+
+        &copy; 2023 - WebApplicationMap all rights reserved - <a asp-area="" asp-page="/Privacy">Privacy</a>
+
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,164 @@
+﻿@page "{id:int}"
+@model WebApplicationMap.Pages.EditAppInfoModel
+@{
+    var message = ViewData["Message"]?.ToString();
+}
+
+<style>
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+</style>
+
+<h1 class="mb-3">Edit App Info</h1>
+
+@if (!string.IsNullOrWhiteSpace(message))
+{
+    <div class="alert alert-success" role="alert">
+        @message
+    </div>
+}
+<form method="post">
+    <div class="row">
+        <div class="column">
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>App Id</td>
+                    <td>
+                        <input type="number" class="form-control" asp-for="editAppInfoModel.App_ID" readonly />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Primary Service Owner</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editAppInfoModel.Primary_ServiceOwner" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>App Version</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editAppInfoModel.App_Version" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Instance Name</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editAppInfoModel.Instance_Name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>AdIntegrated</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editAppInfoModel.AD_Integrated" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>CitrixHosted</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editAppInfoModel.Citrix_hosted" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>HyperDriveReady</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editAppInfoModel.HyperDrive_Ready" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="column">
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+               
+                <tr>
+                    <td>issRequired</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editAppInfoModel.ISS_Required" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>dotNet</td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editAppInfoModel.DotNet" />
+                    </td>
+                </tr>
+        <tr>
+            <td>sslCertificate</td>
+            <td>
+                <input type="text" class="form-control" asp-for="editAppInfoModel.SSL_Certificate"/>
+            </td>
+
+        </tr>
+        <tr>
+        <td>avExclusions</td>
+        <td>
+            <input type="text" class="form-control" asp-for="editAppInfoModel.AV_Exclusions" />
+        </td>
+
+        </tr>
+        <tr>
+        <td>appStorage</td>
+        <td>
+            <input type="text" class="form-control" asp-for="editAppInfoModel.App_Storage" />
+        </td>
+
+        </tr>
+        <tr>
+        <td>iamIntegrated</td>
+        <td>
+            <input type="text" class="form-control" asp-for="editAppInfoModel.IAM_Integrated" />
+        </td>
+
+        </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="text" class="form-control" asp-for="editAppInfoModel" />
+                    </td>
+                </tr>
+        </table>
+        <br />
+        <br />
+        <button type="submit" class="btn btn-primary" asp-page-handler="Update">
+            Update
+        </button>
+        <button type="submit" class="btn btn-primary" asp-page-handler="Delete">
+            Delete
+        </button>
+    </div>
+    </div>
+</div>
+        </form>
+
